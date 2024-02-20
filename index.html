@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="">
+  <meta name="keywords" content="Robotics, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>InvDA</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- background-color:#76B900; -->
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <!-- InvDA: Inversion of Differentiable Rendering Approach for <br>Self-Initializing Pose Estimation -->
+          <h1 class="title is-1 publication-title">InvDA: Self-Initializing Pose Estimation using Differentiable Rendering Approach</h1>
+          <div class="is-size-5 publication-authors">
+
+            <!-- author -->
+            <!-- <span class="author-block">
+              <a href="#">XXX</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">XXX</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="#">XXX</a><sup>3</sup>,
+            </span> -->
+
+
+          </div>
+
+          <!-- <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>XXX,</span><br>
+            <span class="author-block"><sup>2</sup>XXX,</span><br>
+            <span class="author-block"><sup>3</sup>XXX.</span>
+          </div> -->
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://drive.google.com/file/d/xxx/view?usp=sharing"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span> -->
+              <!-- Video Link. -->
+              <!-- <span class="link-block">
+                <a href="https://www.youtube.com/watch?v="
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span> -->
+              <!-- Code Link. -->
+             <!-- <span class="link-block">
+                <a href="https://github.com/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span> -->
+              <!-- Dataset Link. -->
+<!--               <span class="link-block">
+                <a href="https://drive.google.com/drive/"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+              </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <video id="teaser" autoplay muted loop playsinline height="100%">
+
+        <source src="https://i.imgur.com/2zTMFCH.mp4" type="video/mp4">
+      
+      </video>
+      
+      <!-- <div  class='is-centered has-text-centered' align='right'>InvDA: a novel framework for 6-DoF pose estimation that leverages the advantages of differentiable rendering pipelines, specifically focusing on scenarios without the need for initial pose estimates. </div> -->
+
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            InvDA is a novel framework for 6-DoF pose estimation that leverages the advantages of differentiable rendering pipelines, specifically focusing on scenarios without the need for initial pose estimates. Our method applies to various differentiable rendering pipelines and is capable of performing robust and accurate pose estimation from a single RGB observed image using trained scene models. To eliminate the input requirement of the initial estimated pose, we design a global query module based on an image-matching mechanism to automatically acquire the initial pose. This approach fully utilizes the novel view synthesis capability of the differentiable rendering pipeline, allowing the pose estimation task to no longer be constrained by the need for an accurate initial pose. We follow the concept of inverting the differentiable rendering pipeline and employ a gradient-based optimization approach for local fine registration to obtain the 6-DoF pose as output. Furthermore, we introduce a hybrid loss strategy, combining pixel-based loss with explicit matching loss, to navigate the optimization process effectively. Additionally, we introduce a hybrid loss strategy, combining explicit matching loss and masked edge loss, to effectively guide the optimization process which enables the framework to maintain excellent robustness even in complex real-world scenes. In our experiments, both synthetic and real-world datasets demonstrate the method's stability and robustness, showcasing its versatility in pose estimation applications based on differentiable rendering pipelines.
+          </p>
+          <br>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+
+
+    <!-- Pipeline. -->
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Pipeline</h2>
+        <div class="publication-image">
+          <img src="https://i.imgur.com/cPCqY5w.png" alt="Pipeline" width="90%">
+          
+        </div>
+        <div class="content has-text-justified">
+          <p><br>
+            The overall pipeline of InvDA. The deep blue lines represent the initialization operations, where random poses are sampled and pre-rendered images are generated. The light blue lines represent the global query process, where the observed image is matched against the database to identify the initial pose estimation. The orange lines denote the local registration process, and the estimated poses are the optimizable parameters for accurate alignment. Both the implicit encoder and explicit matcher, shown in the pipeline, are pre-trained models that are frozen during the process. 
+          </p>
+          <br>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Paper video. -->
+    <!-- https://youtu.be/xxx -->
+
+    <!-- <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Video</h2>
+        <div class="publication-video">
+          <iframe src="https://www.youtube.com/embed/xxx?rel=0&amp;showinfo=0"
+                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>         
+          </iframe>
+        </div>
+      </div>
+    </div> -->
+
+    <!--/ Paper video. -->
+
+    <!-- Results. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+            *Here is the results of the paper.
+            Here are two tables and two videos, which are the quantitative and qualitative results of synthetic data, and the quantitative and qualitative results of real-world data.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Results. -->
+
+    
+
+  </div>
+</section>
+
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@inproceedings{XXX,
+   author = "XXX",
+   title = "XXX",
+   booktitle = "XXX",
+   year = 2024
+}
+</code></pre>
+  </div>
+</section> -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            Website template by <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
